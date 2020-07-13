@@ -13,13 +13,13 @@ class PointsController{
     let query = knex('points').join('point_items','points.id','=','point_items.point_id');
     
     if(items){
-      query = query.whereIn('point_items.item_id',parsedItems)
+      query = query.whereIn('point_items.item_id',parsedItems);
     }
     if(city){
-      query = query.where('city',String(city))
+      query = query.where('city',String(city));
     }
     if(uf){
-      query = query.where('uf',String(uf))
+      query = query.where('uf',String(uf));
     }
 
     const points = await query.distinct().select('points.*');
